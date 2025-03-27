@@ -69,3 +69,4 @@ function printGoals(...players)
 }
 
 printGoals('Lewandowski', 'Hummels', 'Kimmich', 'Gnarby');
+printGoals('Abc', 'Lewandowski');
