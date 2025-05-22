@@ -226,3 +226,103 @@ for(const day of properties) console.log(day);
 // Property Values
 const values = Object.values(restaurant.openingHours);
 console.log(values);
+
+// Entire object
+const entries = Object.entries(restaurant.openingHours);
+console.log(entries);
+
+for(const [key, {open, close}] of entries)
+{
+    console.log(`At ${key} we open at ${open} and close at ${close}`);
+}
+
+// ----------------------------------------------------------
+// Sets
+
+const orderedSet = new Set(['Pizza', 'Pasta', 'Pizza']);
+console.log(orderedSet);
+
+console.log(new Set('Jonas'));
+console.log(orderedSet.size);
+console.log(orderedSet.has('Pizza'), orderedSet.has('Rissoto'));
+
+for(const order of orderedSet) console.log(order);
+
+const staff = ['Manager', 'Waiter', 'Manager', 'Chef', 'Chef'];
+const uniqueStaff = [...new Set(staff)];
+console.log(uniqueStaff, typeof(uniqueStaff));
+
+const italianFoods = new Set([
+    'pasta',
+    'gnocchi',
+    'tomatoes',
+    'olive oil',
+    'garlic',
+    'basil',
+  ]);
+  
+  const mexicanFoods = new Set([
+    'tortillas',
+    'beans',
+    'rice',
+    'tomatoes',
+    'avocado',
+    'garlic',
+  ]);
+
+console.log(italianFoods.union(mexicanFoods));
+console.log(italianFoods.intersection(mexicanFoods));
+console.log(italianFoods.difference(mexicanFoods));
+
+// ----------------------------------------------------------
+// Maps
+
+const rest = new Map();
+rest.set('name', 'Ishan');
+rest.set('age', 23);
+console.log(rest);
+
+rest.set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic']);
+rest.set('open', 11).set('close', 22);
+rest.set(true, 'We are open :)');
+rest.set(false, 'We are closed :(');
+
+console.log(rest.get('name'));
+console.log(rest.get('open'));
+
+const time = 21;
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+console.log(rest.has('categories'));
+console.log(rest.size);
+
+const arr4 = [1, 2];
+rest.set(arr4, 'Test');
+console.log(rest);
+
+console.log(rest.get(arr4));
+
+const abc = new Map([
+    [1, 'one'],
+    [2, 'two']
+]);
+console.log(abc.get(1));
+
+const hoursMap = new Map(Object.entries(restaurant.openingHours));
+console.log(hoursMap);
+// ----------------------------------------------------------
+// Strings
+
+const airline = 'TAP Air Portugal Air';
+
+console.log(airline.toLowerCase());
+console.log(airline.replaceAll('Air', 'Land'));
+
+let str1 = 'a+very+nice+string';
+console.log(str1.split('+'));
+
+let str2 = 'Ishan Chaturvedi';
+const [firstName, lastName] = str2.split(' ');
+
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);

@@ -39,6 +39,7 @@ odds: {
     },
 };
 
+// Challenge 1 --------------------------------------------
 const [players1, players2] = game.players;
 
 const [gk, ...fieldPlayers] = players1;
@@ -70,3 +71,69 @@ function printGoals(...players)
 
 printGoals('Lewandowski', 'Hummels', 'Kimmich', 'Gnarby');
 printGoals('Abc', 'Lewandowski');
+
+// Challenge 2 --------------------------------------------
+
+console.log('--------------------------------------------');
+for(const [idx, name] of game.scored.entries())
+{
+    console.log(`Goal ${idx+1} : ${name}`);
+}
+
+let sum = 0;
+const odd_vals = Object.entries(game.odds);
+for(const [name, odd] of odd_vals) sum += odd;
+console.log(sum / odd_vals.length);
+
+for(const [name, odd] of odd_vals)
+{
+    if(name === 'x') console.log(`Odd of draw : ${odd}`);
+    else console.log(`Odd of ${game[name]} : ${odd}`);
+}
+
+const scorers = {};
+for(const plr of game.scored)
+{
+    scorers[plr] ? scorers[plr]++ : scorers[plr] = 1;
+}
+console.log(scorers);
+
+// Challenge 3 --------------------------------------------
+
+const gameEvents = new Map([
+    [17, '⚽️ GOAL'],
+    [36, '🔁 Substitution'],
+    [47, '⚽️ GOAL'],
+    [61, '🔁 Substitution'],
+    [64, '🔶 Yellow card'],
+    [69, '🔴 Red card'],
+    [70, '🔁 Substitution'],
+    [72, '🔁 Substitution'],
+    [76, '⚽️ GOAL'],
+    [80, '⚽️ GOAL'],
+    [92, '🔶 Yellow card'],
+  ]);
+  
+const eve = new Set();
+const events = [];
+for(const [key, value] of gameEvents)
+{
+    if(eve.has(value)) continue;
+    else 
+    {
+        eve.add(value);
+        events.push([key, value]);
+    }
+}
+console.log(events);
+
+const events2 = [...new Set(gameEvents.values())];
+console.log(events2);
+
+gameEvents.delete(64);
+
+for(const [key, value] of gameEvents)
+{
+    if(key <= 45) console.log("[FIRST HALF] : " + key + value);
+    else console.log("[SECOND HALF] : " + key + value);
+}
